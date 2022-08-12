@@ -74,14 +74,29 @@ section a{
         <h1>Blog Card</h1>
     </div>
     <section>
-        <h3>Natural beauty. which is grateful in Bangladesh.</h3>
-        <img src="https://images.pexels.com/photos/257840/pexels-photo-257840.jpeg?cs=srgb&dl=agriculture-apple-blur-257840.jpg&fm=jpg" alt="">
-        <p class="date">12th December, 2018</p>
-        <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.</p>
+        <h3 class="title-blog"></h3>
+        <img src="" alt="">
+        <p class="date"></p>
+        <p class="description"></p>
         <a href="">Read More</a>
     </section>
     <script type="text/javascript">
+        const url = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY';
+        const imageBlog = document.querySelector("img");
+        const dateOfBlog = document.querySelector('.date');
+        const descOfBlog = document.querySelector('.description');
+        const titleOfBlog = document.querySelector('.title-blog');
 
+        async function fetchRequest() {
+            const response = await fetch(url);
+            const data = await response.json();
+            imageBlog.setAttribute('src', data.hdurl);
+            dateOfBlog.innerText = data.date;
+            descOfBlog.innerText = data.explanation;
+            titleOfBlog.innerText = data.title;
+        }
+
+        fetchRequest();
     </script>
 </body>
 </html>
